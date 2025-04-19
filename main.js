@@ -34,11 +34,18 @@ function updateTableRow(rowIndex, quantity, points) {
     if (row) {
         const quantityCell = row.querySelector('td:nth-child(3)');
         const pointsCell = row.querySelector('td:nth-child(4)');
+
         if (quantityCell && pointsCell) {
             quantityCell.textContent = quantity || 0;
-            pointsCell.textContent = points || 0;
-        }
+            
+      // Ubah jadi 2 digit desimal kalau poin angka desimal
+      if (!isNaN(points) && typeof points === "number") {
+        pointsCell.textContent = points.toFixed(2);
+      } else {
+        pointsCell.textContent = points || 0;
+      }
     }
+  }
 }
 
 function runOnRating() {

@@ -156,3 +156,58 @@
     font-weight: bold;
     text-align: center;
   }
+
+  /* Tambahan Style untuk Heading dan Tabel Assessment */
+
+.title {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 24px;
+  text-align: center;
+  color: #333;
+  width: 100%;
+}
+
+.table-container {
+  width: 100%;
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.table {
+  width: 100%;
+  max-width: 800px;
+  border-collapse: collapse;
+  font-size: 16px;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.table thead {
+  background-color: #f9f9f9;
+}
+
+.table th,
+.table td {
+  padding: 12px 16px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+.table tbody tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+@media (max-width: 600px) {
+  .table-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .table {
+    min-width: 600px; /* Biar tetap rapi dan tidak mepet */
+  }
+}
