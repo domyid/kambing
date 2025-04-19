@@ -6,13 +6,13 @@ import {getCookie} from "https://cdn.jsdelivr.net/gh/jscroot/cookie@0.0.1/croot.
 
 // get("https://asia-southeast2-awangga.cloudfunctions.net/domyid/api/activityscore","login",getCookie("login"))
 // get("https://api.do.my.id/notif/ux/getlaporan/"+getHash(),runafterGet)
-get("https://asia-southeast2-awangga.cloudfunctions.net/domyid/api/data/proyek/bimbingan/:id")
+get("https://asia-southeast2-awangga.cloudfunctions.net/domyid/api/data/proyek/bimbingan/"+getHash(),runafterGet)
 
 onClick("tombol",runOnRating);
 
 function runafterGet(result){
     console.log(result);
-    setInner("petugas",result.petugas);
+    setInner("petugas",result.phonenumber);
     // Mengganti \n dengan <br> untuk menampilkan baris baru
     let solusiDenganBarisBaru = result.solusi.replace(/\n/g, "<br>");
     setInner("solusi", solusiDenganBarisBaru);
