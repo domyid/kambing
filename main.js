@@ -4,6 +4,7 @@ import {get,postWithToken} from "https://cdn.jsdelivr.net/gh/jscroot/api@0.0.6/c
 import {getCookie} from "https://cdn.jsdelivr.net/gh/jscroot/cookie@0.0.1/croot.js";
 
 
+// get("https://asia-southeast2-awangga.cloudfunctions.net/domyid/api/activityscore","login",getCookie("login"))
 get("https://api.do.my.id/notif/ux/getlaporan/"+getHash(),runafterGet)
 
 onClick("tombol",runOnRating);
