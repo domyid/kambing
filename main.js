@@ -3,13 +3,13 @@ import {getHash} from "https://cdn.jsdelivr.net/gh/jscroot/url@0.0.9/croot.js";
 import {get,postWithToken} from "https://cdn.jsdelivr.net/gh/jscroot/api@0.0.6/croot.js";
 import {getCookie} from "https://cdn.jsdelivr.net/gh/jscroot/cookie@0.0.1/croot.js";
 
-get("https://asia-southeast2-awangga.cloudfunctions.net/domyid/data/proyek/bimbingan/"+getHash(),runafterGet)
+get("https://asia-southeast2-awangga.cloudfunctions.net/domyid/data/proyek/bimbingan/"+getHash(), handleActivityScoreResponse, runafterGet)
 
 onClick("tombol",runOnRating);
 
-export async function main(){
-    fetchActivityScore();
-}
+// export async function main(){
+//     fetchActivityScore();
+// }
 
 function runafterGet(result){
     console.log(result);
@@ -19,10 +19,10 @@ function runafterGet(result){
     setInner("solusi", solusiDenganBarisBaru);
 }
 
-function fetchActivityScore() {
-    const url = "https://asia-southeast2-awangga.cloudfunctions.net/domyid/data/proyek/bimbingan/" + getHash();
-    get(url, handleActivityScoreResponse);
-}
+// function fetchActivityScore() {
+//     const url = "https://asia-southeast2-awangga.cloudfunctions.net/domyid/data/proyek/bimbingan/" + getHash();
+//     get(url, handleActivityScoreResponse);
+// }
 
 function handleActivityScoreResponse(result) {
     if (result.status === 200) {
