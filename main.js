@@ -55,7 +55,7 @@ function runOnRating() {
         komentar: getValue("komentar")
     };
     setInner("feedback", "Mohon tunggu sebentar data sedang dikirim...");
-    postWithToken("https://api.do.my.id/notif/ux/postrating", "login", getCookie("login"), datarating, responseFunction);
+    postWithToken("https://asia-southeast2-awangga.cloudfunctions.net/domyid/data/proyek/bimbingan/" + getHash(), "login", getCookie("login"), datarating, responseFunction);
 }
 
 function responseFunction(result) {
