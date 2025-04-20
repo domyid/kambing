@@ -56,7 +56,8 @@ function runOnRating() {
     let datarating = {
         id: getHash(),
         validasi: Number(getValueRadio("rating")),
-        komentar: getValue("komentar")
+        komentar: getValue("komentar"),
+        approved: getChecked("checkbox-approved"),
     };
     setInner("feedback", "Mohon tunggu sebentar data sedang dikirim...");
     postWithToken(API_URL, "login", getCookie("login"), datarating, responseFunction);
@@ -68,16 +69,7 @@ function responseFunction(result) {
      checkApprovalStatus(); // cek ulang setelah kirim rating
 }
 
-function checkApprovalStatus() {
-    get(API_URL, function(result) {
-        const checkbox = document.getElementById("checkbox-approved");
-
-        // Jika Approved true, centang checkbox
-        if (result && result.Approved === true) {
-            checkbox.checked = true;
-        } else {
-            // Jika Approved false atau tidak ada, uncheck
-            checkbox.checked = false;
-        }
-    });
+function getChecked(id) {
+    const checkbox = document.getElementById(id);
+    return checkbox.checked;
 }
