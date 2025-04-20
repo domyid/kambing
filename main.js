@@ -20,11 +20,11 @@ function runafterGet(result) {
 
 function handleActivityScoreResponse(result) {
     if (result.status && result.status.includes("Error : Data bimbingan tidak di temukan")) {
-        window.location.href = "./404.html"; // Ganti dengan path halaman 404 kamu
+        window.location.href = "./404.html";
         return;
     }
-    if (result.approved == true) {
-        window.location.href = './approved.html'; // Ganti dengan path halaman approved kamu
+    if (result.approved) {
+        window.location.href = './approved.html';
         return;
     }
     console.log("📋 Response masuk:", result);
