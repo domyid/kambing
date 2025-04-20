@@ -71,12 +71,9 @@ function responseFunction(result) {
 
 function checkApprovalStatus() {
     get(API_URL, function(result) {
-        const checkbox = document.getElementById("checkbox-approved");
-        if (typeof result.Approved !== "undefined") {
-            checkbox.style.display = "inline"; // tampilkan checkbox
+        if (result.status === 200 || result.Approved !== undefined) {
+            const checkbox = document.getElementById("checkbox-approved");
             checkbox.checked = result.Approved === true;
-        } else {
-            checkbox.style.display = "none"; // sembunyikan kalau tidak ada
-        }
-    });
-}
+          }
+        });
+      }
