@@ -66,14 +66,19 @@ function runOnRating() {
 function responseFunction(result) {
     console.log("✅ Rating response:", result);
     setInner("feedback", "Feedback telah berhasil dikirim. Terima kasih! " + result.phonenumber);
-     checkApprovalStatus();
+     checkApprovalStatus(); // cek ulang setelah kirim rating
 }
 
 function checkApprovalStatus() {
     get(API_URL, function(result) {
-        if (result.status === 200 || result.Approved !== undefined) {
-            const checkbox = document.getElementById("checkbox-approved");
-            checkbox.checked = result.Approved === true;
-          }
-        });
-      }
+        const checkbox = document.getElementById("checkbox-approved");
+
+        // Jika Approved true, centang checkbox
+        if (result && result.Approved === true) {
+            checkbox.checked = true;
+        } else {
+            // Jika Approved false atau tidak ada, uncheck
+            checkbox.checked = false;
+        }
+    });
+}
