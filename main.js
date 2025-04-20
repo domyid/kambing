@@ -19,6 +19,10 @@ function runafterGet(result) {
 }
 
 function handleActivityScoreResponse(result) {
+    if (result.Status && result.Status.includes("Error : Data bimbingan tidak di temukan")) {
+        window.location.href = "/404.html"; // Ganti dengan path halaman 404 kamu
+        return;
+    }
     console.log("📋 Response masuk:", result);
     updateTableRow(0, result.sponsordata, result.sponsor);
     updateTableRow(1, result.stravakm, result.strava);
