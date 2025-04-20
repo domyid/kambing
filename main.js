@@ -8,9 +8,8 @@ const API_URL = "https://asia-southeast2-awangga.cloudfunctions.net/domyid/data/
 
 get(API_URL, handleActivityScoreResponse, runafterGet);
 
+onClick("checkbox-approved", checkApprovalStatus)
 onClick("tombol", runOnRating);
-
-checkApprovalStatus();
 
 function runafterGet(result) {
     console.log("🔍 Raw data:", result);
