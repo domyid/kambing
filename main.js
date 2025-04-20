@@ -4,7 +4,8 @@ import {get, postWithToken} from "https://cdn.jsdelivr.net/gh/jscroot/api@0.0.6/
 import {getCookie} from "https://cdn.jsdelivr.net/gh/jscroot/cookie@0.0.1/croot.js";
 
 // Ambil data dan jalankan 2 fungsi callback sekaligus
-get("https://asia-southeast2-awangga.cloudfunctions.net/domyid/data/proyek/bimbingan/" + getHash(), handleActivityScoreResponse, runafterGet);
+const API_URL = "https://asia-southeast2-awangga.cloudfunctions.net/domyid/data/proyek/bimbingan/" + getHash()
+get(API_URL, handleActivityScoreResponse, runafterGet);
 
 onClick("tombol", runOnRating);
 
@@ -19,11 +20,12 @@ function runafterGet(result) {
 
 function handleActivityScoreResponse(result) {
     console.log("📋 Response masuk:", result);
+    updateTableRow(0, result.sponsordata, result.sponsor);
     updateTableRow(1, result.stravakm, result.strava);
     updateTableRow(2, result.iqresult, result.iq);
-    // updateTableRow(3, result.pomokitsesi, result.pomokit);
+    updateTableRow(3, result.pomokitsesi, result.pomokit);
     updateTableRow(6, result.trackerdata, result.tracker);
-    // updateTableRow(9, result.gtmetrixresult, result.gtmetrix);
+    updateTableRow(9, result.gtmetrixresult, result.gtmetrix);
     updateTableRow(10, result.webhookpush, result.webhook);
     updateTableRow(11, result.presensihari, result.presensi);
 }
@@ -51,11 +53,11 @@ function updateTableRow(rowIndex, quantity, points) {
 function runOnRating() {
     let datarating = {
         id: getHash(),
-        rating: Number(getValueRadio("rating")),
+        validasi: Number(getValueRadio("rating")),
         komentar: getValue("komentar")
     };
     setInner("feedback", "Mohon tunggu sebentar data sedang dikirim...");
-    postWithToken("https://asia-southeast2-awangga.cloudfunctions.net/domyid/data/proyek/bimbingan/" + getHash(), "login", getCookie("login"), datarating, responseFunction);
+    postWithToken(API_URL, "login", getCookie("login"), datarating, responseFunction);
 }
 
 function responseFunction(result) {
