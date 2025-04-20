@@ -7,8 +7,6 @@ import {getCookie} from "https://cdn.jsdelivr.net/gh/jscroot/cookie@0.0.1/croot.
 const API_URL = "https://asia-southeast2-awangga.cloudfunctions.net/domyid/data/proyek/bimbingan/" + getHash()
 
 get(API_URL, handleActivityScoreResponse, runafterGet);
-
-onClick("checkbox-approved", checkApprovalStatus)
 onClick("tombol", runOnRating);
 
 function runafterGet(result) {
