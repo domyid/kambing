@@ -5,11 +5,12 @@ import {getCookie} from "https://cdn.jsdelivr.net/gh/jscroot/cookie@0.0.1/croot.
 
 // Ambil data dan jalankan 2 fungsi callback sekaligus
 const API_URL = "https://asia-southeast2-awangga.cloudfunctions.net/domyid/data/proyek/bimbingan/" + getHash()
+
 get(API_URL, handleActivityScoreResponse, runafterGet);
 
 onClick("tombol", runOnRating);
 
-    checkApprovalStatus();
+checkApprovalStatus();
 
 function runafterGet(result) {
     console.log("🔍 Raw data:", result);
@@ -65,14 +66,17 @@ function runOnRating() {
 function responseFunction(result) {
     console.log("✅ Rating response:", result);
     setInner("feedback", "Feedback telah berhasil dikirim. Terima kasih! " + result.phonenumber);
+     checkApprovalStatus();
 }
 
 function checkApprovalStatus() {
-    const url = "https://asia-southeast2-awangga.cloudfunctions.net/domyid/data/proyek/bimbingan/" + getHash();
-    get(url, function(result) {
-      if (result.status === 200 || result.Approved !== undefined) {
+    get(API_URL, function(result) {
         const checkbox = document.getElementById("checkbox-approved");
-        checkbox.checked = result.Approved === true;
-      }
+        if (typeof result.Approved !== "undefined") {
+            checkbox.style.display = "inline"; // tampilkan checkbox
+            checkbox.checked = result.Approved === true;
+        } else {
+            checkbox.style.display = "none"; // sembunyikan kalau tidak ada
+        }
     });
-  }
+}

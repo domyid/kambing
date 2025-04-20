@@ -208,11 +208,12 @@
   }
 
   .table {
-    min-width: 600px; /* Biar tetap rapi dan tidak mepet */
+    min-width: 600px;
   }
 }
 
 #checkbox-approved {
+  display: none;
   transform: scale(1.2);
   margin-right: 8px;
 }
