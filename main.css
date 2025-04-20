@@ -213,7 +213,7 @@
 }
 
 #checkbox-approved {
-  display: none;
+  /* display: none; */
   transform: scale(1.2);
   margin-right: 8px;
 }
