@@ -62,5 +62,5 @@ function runOnRating() {
 
 function responseFunction(result) {
     console.log("✅ Rating response:", result);
-    setInner("feedback", "Feedback telah berhasil dikirim. Terima kasih! " + Pak + result.name);
+    setInner("feedback", "Feedback telah berhasil dikirim. Terima kasih! " + result.name);
 }
