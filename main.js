@@ -23,6 +23,10 @@ function handleActivityScoreResponse(result) {
         window.location.href = "./404.html"; // Ganti dengan path halaman 404 kamu
         return;
     }
+    if (result.approved == true) {
+        window.location.href = './approved.html'; // Ganti dengan path halaman approved kamu
+        return;
+    }
     console.log("📋 Response masuk:", result);
     updateTableRow(0, result.sponsordata, result.sponsor);
     updateTableRow(1, result.stravakm, result.strava);
