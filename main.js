@@ -68,8 +68,5 @@ function responseFunction(result) {
 
 function getChecked(id) {
     const checkbox = document.getElementById(id);
-    if (checkbox) {
-        return checkbox.checked;
-    }
-    return false;
+    return checkbox && checkbox.checked;
 }
