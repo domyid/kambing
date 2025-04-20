@@ -66,7 +66,6 @@ function runOnRating() {
 function responseFunction(result) {
     console.log("✅ Rating response:", result);
     setInner("feedback", "Feedback telah berhasil dikirim. Terima kasih! " + result.phonenumber);
-     checkApprovalStatus(); // cek ulang setelah kirim rating
 }
 
 function getChecked(id) {
