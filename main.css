@@ -211,3 +211,14 @@
     min-width: 600px; /* Biar tetap rapi dan tidak mepet */
   }
 }
+
+#checkbox-approved {
+  transform: scale(1.2);
+  margin-right: 8px;
+}
+
+.field.checkbox-centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -9,8 +9,7 @@ get(API_URL, handleActivityScoreResponse, runafterGet);
 
 onClick("tombol", runOnRating);
 
-// const nomor = result.phonenumber;
-// const dosen = result.phonenumber === nomor ? result.name : nomor;
+    checkApprovalStatus();
 
 function runafterGet(result) {
     console.log("🔍 Raw data:", result);
@@ -67,3 +66,13 @@ function responseFunction(result) {
     console.log("✅ Rating response:", result);
     setInner("feedback", "Feedback telah berhasil dikirim. Terima kasih! " + result.phonenumber);
 }
+
+function checkApprovalStatus() {
+    const url = "https://asia-southeast2-awangga.cloudfunctions.net/domyid/data/proyek/bimbingan/" + getHash();
+    get(url, function(result) {
+      if (result.status === 200 || result.Approved !== undefined) {
+        const checkbox = document.getElementById("checkbox-approved");
+        checkbox.checked = result.Approved === true;
+      }
+    });
+  }
