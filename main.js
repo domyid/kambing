@@ -9,8 +9,8 @@ get(API_URL, handleActivityScoreResponse, runafterGet);
 
 onClick("tombol", runOnRating);
 
-const nomor = result.phonenumber;
-const dosen = result.asesor?.phonenumber === nomor ? result.asesor.name : nomor;
+// const nomor = result.phonenumber;
+// const dosen = result.phonenumber === nomor ? result.name : nomor;
 
 function runafterGet(result) {
     console.log("🔍 Raw data:", result);
@@ -65,5 +65,5 @@ function runOnRating() {
 
 function responseFunction(result) {
     console.log("✅ Rating response:", result);
-    setInner("feedback", "Feedback telah berhasil dikirim. Terima kasih! " + dosen + "!");
+    setInner("feedback", "Feedback telah berhasil dikirim. Terima kasih! " + result.name + "!");
 }
