@@ -32,10 +32,13 @@ function handleActivityScoreResponse(result) {
     updateTableRow(1, result.stravakm, result.strava);
     updateTableRow(2, result.iqresult, result.iq);
     updateTableRow(3, result.pomokitsesi, result.pomokit);
+    updateTableRow(4, result.mbc, result.mbcPoints || result.blockchain); 
+    updateTableRow(5, result.rupiah, result.qrisPoints || result.qris);   
     updateTableRow(6, result.trackerdata, result.tracker);
     updateTableRow(9, result.gtmetrixresult, result.gtmetrix);
     updateTableRow(10, result.webhookpush, result.webhook);
     updateTableRow(11, result.presensihari, result.presensi);
+    updateTableRow(12, result.rvn, result.ravencoinPoints || 0);
 }
 
 function updateTableRow(rowIndex, quantity, points) {
