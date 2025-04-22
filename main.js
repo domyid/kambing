@@ -1,4 +1,4 @@
-import {getValueRadio, setInner, onClick, hide, show, getValue} from "https://cdn.jsdelivr.net/gh/jscroot/element@0.1.5/croot.js";
+import {getValueRadio, setInner, onClick, getValue} from "https://cdn.jsdelivr.net/gh/jscroot/element@0.1.5/croot.js";
 import {getHash} from "https://cdn.jsdelivr.net/gh/jscroot/url@0.0.9/croot.js";
 import {get, postWithToken} from "https://cdn.jsdelivr.net/gh/jscroot/api@0.0.6/croot.js";
 import {getCookie} from "https://cdn.jsdelivr.net/gh/jscroot/cookie@0.0.1/croot.js";
@@ -7,6 +7,22 @@ import {getCookie} from "https://cdn.jsdelivr.net/gh/jscroot/cookie@0.0.1/croot.
 const API_URL = "https://asia-southeast2-awangga.cloudfunctions.net/domyid/data/proyek/bimbingan/" + getHash()
 
 get(API_URL, handleActivityScoreResponse, runafterGet);
+
+// Cek input dan atur status tombol
+function checkInput() {
+    const rating = getValueRadio("rating");
+    const komentar = getValue("komentar").trim();
+    const tombol = document.getElementById("tombol");
+
+    tombol.disabled = !(rating && komentar !== "");
+}
+
+// Event listener untuk komentar dan radio rating
+document.getElementById("komentar").addEventListener("input", checkInput);
+document.querySelectorAll('input[name="rating"]').forEach(radio => {
+    radio.addEventListener("change", checkInput);
+});
+
 onClick("tombol", runOnRating);
 
 function runafterGet(result) {
@@ -62,11 +78,14 @@ function updateTableRow(rowIndex, quantity, points) {
 }
 
 function runOnRating() {
+    const tombol = document.getElementById('tombol');
+    tombol.disabled = true;
+
     let datarating = {
         id: getHash(),
         validasi: Number(getValueRadio("rating")),
-        komentar: getValue("komentar"),
-        approved: getChecked("checkbox-approved"),
+        komentar: getValue("komentar").trim(),
+        approved: true,
     };
     setInner("feedback", "Mohon tunggu sebentar data sedang dikirim...");
     postWithToken(API_URL, "login", getCookie("login"), datarating, responseFunction);
@@ -75,9 +94,4 @@ function runOnRating() {
 function responseFunction(result) {
     console.log("✅ Rating response:", result);
     setInner("feedback", "Feedback telah berhasil dikirim. Terima kasih! " + result.phonenumber);
-}
-
-function getChecked(id) {
-    const checkbox = document.getElementById(id);
-    return checkbox && checkbox.checked;
 }
