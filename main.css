@@ -148,6 +148,15 @@
     background-color: #04AA6D;
   }
 
+  .button:disabled {
+    background-color: #eeeeee; /* abu-abu lebih pucat saat disable */
+    color: #aaaaaa;
+    cursor: not-allowed;
+}
+.button:disabled:hover {
+    background-color: #eeeeee;
+}
+
   .solusi {
     margin-top: 20px; /* Ganti nilai ini sesuai dengan kebutuhan Anda */
   }
@@ -210,15 +219,4 @@
   .table {
     min-width: 600px;
   }
-}
-
-#checkbox-approved {
-  transform: scale(1.2);
-  margin-right: 8px;
-}
-
-.field.checkbox-centered {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
