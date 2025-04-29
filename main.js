@@ -44,6 +44,10 @@ function handleActivityScoreResponse(result) {
         return;
     }
     console.log("📋 Response masuk:", result);
+
+    let name = document.getElementsByClassName("name");
+    name.textContent = result.name;
+
     updateTableRow(0, result.sponsordata, result.sponsor);
     updateTableRow(1, result.stravakm, result.strava);
     updateTableRow(2, result.iqresult, result.iq);
