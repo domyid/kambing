@@ -46,7 +46,7 @@ function handleActivityScoreResponse(result) {
     console.log("📋 Response masuk:", result);
 
     const name = document.querySelector('.name');
-    name.textContent = result.name;
+    name.textContent = result.username;
 
     updateTableRow(0, result.sponsordata, result.sponsor);
     updateTableRow(1, result.stravakm, result.strava);
